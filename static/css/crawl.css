@@ -1,0 +1,51 @@
+/* Global */
+:root {
+  /* Color */
+  --color-white: #ffffff;
+  --color-light-white: #eeeeee;
+  --color-dark-white: #bdbdbd;
+  --color-pink: #fe918d;
+  --color-dark-pink: #ff6863;
+  --color-grey: #616161;
+  --color-light-grey: #7c7979;
+  --color-dark-grey: #4d4d4d;
+  --color-blue: #73aace;
+  --color-yellow: #fff7d1;
+  --color-orange: #feb546;
+  --color-black: #000000;
+
+  /* Font size */
+  --font-large: 48px;
+  --font-medium: 28px;
+  --font-regular: 18px;
+  --font-small: 16px;
+  --font-micro: 14px;
+
+  /* Font weight */
+  --weight-bold: 700;
+  --weight-semi-bold: 600;
+  --weight-regular: 400;
+
+  /* Size */
+  --size-border-radius: 4px;
+
+  /* Animation */
+  --animation-duration: 300ms; /* 애니메이션 효과를 줄때 1s는 너무 길기 때문에 보통 300ms 준다. 이 속도가 제일 예쁘게 변화하기 때문! */
+}
+
+h3{
+  font-size: var(--font-regular);
+  font-weight: var(--weight-semi-bold);
+  color: var(--color-dark-grey);
+  margin: 8px 0;
+}
+
+h5{
+  font-weight: var(--weight-regular);
+  color: var(--color-dark-grey);
+}
+
+p{
+    color: var(--color-dark-grey);
+    font-size: var(--font-small);
+}

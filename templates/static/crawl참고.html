@@ -1,0 +1,418 @@
+<html class="translated-ltr"><head>
+    <meta charset="UTF-8">
+    <title>주식 예측 프로그램</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/static/favicon.png">
+    <title>주식 예측 프로그램</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/static/css/starter-template.css" rel="stylesheet">
+    <link href="/static/css/style2.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&family=Jua&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&family=Jua&family=Nanum+Gothic&display=swap" rel="stylesheet">
+
+    <!-- 본문에서는 다루지 않은 코드입니다. 부록 A에서 살펴보는 플러그인입니다. -->
+    <!-- 구 버전의 인터넷 익스플로러에서 HTML5 태그를 인식하게 합니다. -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- 초기화 -->
+    <link href="https://fonts.googleapis.com/css?family=Coiny" rel="stylesheet" type="text/css">
+    <!-- 초기화 -->
+    <style>
+        * { margin: 0; padding: 0; }
+        body { font-family: 'Times New Roman', serif; }
+        li { list-style: none; }
+        a { text-decoration: none; }
+        img { border: 0; }
+    </style>
+    <!-- 헤더 -->
+    <style>
+        #main_header {
+            /* 중앙 정렬*/
+            width: 960px; margin: 0 auto;
+
+            /* 절대 좌표 */
+            height: 160px;
+            position: relative;
+        }
+        #main_header > #title {
+            position: absolute;
+            left: 20px; top: 30px;
+        }
+        #main_header > #main_gnb {
+            position: absolute;
+            right: 0; top: 0;
+        }
+        #main_header > #main_lnb {
+            position: absolute;
+            right: 0; bottom: 10px;
+        }
+    </style>
+    <!-- 타이틀 -->
+    <style>
+        #title {
+            font-family: 'Coiny', cursive;
+        }
+    </style>
+    <!-- 메뉴(1) -->
+    <style>
+        #main_gnb > ul { overflow: hidden; }
+        #main_gnb > ul > li { float: left; }
+        #main_gnb > ul > li > a {
+            display: block;
+            padding: 2px 10px;
+            border: 1px solid black;
+        }
+        #main_gnb > ul > li > a:hover {
+            background: black;
+            color: white;
+        }
+        #main_gnb > ul > li:first-child > a { border-radius: 10px 0 0 10px; }
+        #main_gnb > ul > li:last-child > a  { border-radius: 0 10px 10px 0; }
+    </style>
+    <!-- 메뉴(2) -->
+    <style>
+        #main_lnb > ul { overflow: hidden; }
+        #main_lnb > ul > li { float: left; }
+        #main_lnb > ul > li > a {
+            display: block;
+            padding: 10px 20px;
+            border: 1px solid black;
+        }
+        #main_lnb > ul > li > a:hover {
+            background: black;
+            color: white;
+        }
+        #main_lnb > ul > li:first-child > a { border-radius: 10px 0 0 10px; }
+        #main_lnb > ul > li:last-child > a  { border-radius: 0 10px 10px 0; }
+    </style>
+    <!-- 콘텐츠 -->
+    <style>
+        #content {
+            /* 중앙 정렬 */
+            width: 960px; margin: 0 auto;
+
+            /* 수평 레이아웃 구성 */
+            overflow: hidden;
+        }
+        #content > #main_section {
+            width: 960px;
+            float: left;
+        }
+        #content > #main_aside {
+            width: 200px;
+            float: right;
+        }
+    </style>
+    <!-- 본문 -->
+    <style>
+        #main_section > article.main_article {
+            margin-bottom: 10px;
+            padding: 20px;
+            border: 1px solid black;
+        }
+    </style>
+    <!-- 사이드 -->
+    <style>
+        /* 첫 번째 탭 */
+        input:nth-of-type(1) { display: none; }
+        input:nth-of-type(1) ~ div:nth-of-type(1) { display: none; }
+        input:nth-of-type(1):checked ~ div:nth-of-type(1) { display: block; }
+
+        /* 두 번째 탭 */
+        input:nth-of-type(2) { display: none; }
+        input:nth-of-type(2) ~ div:nth-of-type(2) { display: none; }
+        input:nth-of-type(2):checked ~ div:nth-of-type(2) { display: block; }
+
+        /* 탭 모양 구성 */
+        section.buttons { overflow: hidden; }
+        section.buttons > label {
+            /* 수평 정렬 */
+            display: block; float: left;
+
+            /* 크기 및 글자 위치 지정*/
+            width: 100px; height: 30px;
+            line-height: 30px;
+            text-align: center;
+
+            /* 테두리 지정 */
+            box-sizing: border-box;
+            border: 1px solid black;
+
+            /* 색상 지정*/
+            background: black;
+            color: white;
+        }
+        input:nth-of-type(1):checked ~ section.buttons >  label:nth-of-type(1) {
+            background: white;
+            color: black;
+        }
+        input:nth-of-type(2):checked ~ section.buttons >  label:nth-of-type(2) {
+            background: white;
+            color: black;
+        }
+    </style>
+    <!-- 목록 -->
+    <style>
+        .item {
+            overflow: hidden;
+            padding: 10px;
+            border: 1px solid black;
+            border-top: none;
+        }
+        .thumbnail {
+            float: left;
+        }
+        .description {
+            float: left;
+            margin-left: 10px;
+        }
+        .description > strong {
+            display: block;
+            width: 120px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
+    <!-- 푸터 -->
+    <style>
+        #main_footer {
+            /* 중앙 정렬 */
+
+
+
+        }
+        .m_footer1{
+            width: 960px; margin: 0 auto;
+            margin-leftt: 50px;
+
+            /* 테두리 */
+            box-sizing: border-box;
+            padding: 20px;
+            border: 1px solid black;
+
+            /* 글자 정렬 */
+            text-align: center;
+        }
+        .m_footer2{
+            width: 960px; margin: 0 auto;
+            margin-leftt: 50px;
+
+            /* 테두리 */
+            box-sizing: border-box;
+            padding: 20px;
+            border: 1px solid black;
+
+            /* 글자 정렬 */
+            text-align: center;
+        }
+
+        .cont1{
+            display:flex;
+        }
+
+        .m_footer3{
+            width: 960px; margin: 0 auto;
+            margin-leftt: 50px;
+
+            /* 테두리 */
+            box-sizing: border-box;
+            padding: 20px;
+            border: 1px solid black;
+
+            /* 글자 정렬 */
+            text-align: center;
+        }
+        .cont2{
+            display:flex;
+        }
+
+        .video1{
+            height: 150px;
+        }
+        .footer_1{
+            height : 150px;
+            width : 210px;
+            margin-right: 10px;
+            background-color: #2aabd2;
+
+        }
+        .footer_2{
+            height : 150px;
+            width : 210px;
+            margin-right: 10px;
+            background-color: #2aabd2;
+
+        }
+        .footer_3{
+            height : 150px;
+            width : 210px;
+            margin-right: 10px;
+            background-color: #2aabd2;
+
+        }
+        .footer_4{
+            height : 150px;
+            width : 210px;
+            margin-right: 10px;
+            background-color: #2aabd2;
+
+        }
+
+          .cont3{
+            display:flex;
+        }
+
+        .video11{
+            height: 150px;
+        }
+        .footer_11{
+            height : 150px;
+            width : 210px;
+            margin-right: 10px;
+            background-color: #2aabd2;
+
+        }
+        .footer_21{
+            height : 150px;
+            width : 210px;
+            margin-right: 10px;
+            background-color: #2aabd2;
+
+        }
+        .footer_31{
+            height : 150px;
+            width : 210px;
+            margin-right: 10px;
+            background-color: #2aabd2;
+
+        }
+        .footer_41 {
+            height: 150px;
+            width: 210px;
+            margin-right: 10px;
+            background-color: #2aabd2;
+
+        }
+        .video12{
+            height: 150px;
+        }
+        .footer_12{
+            height : 150px;
+            width : 210px;
+            margin-right: 10px;
+            background-color: #2aabd2;
+
+        }
+        .footer_22{
+            height : 150px;
+            width : 210px;
+            margin-right: 10px;
+            background-color: #2aabd2;
+
+        }
+        .footer_32{
+            height : 150px;
+            width : 210px;
+            margin-right: 10px;
+            background-color: #2aabd2;
+
+        }
+        .footer_42{
+            height : 150px;
+            width : 210px;
+            margin-right: 10px;
+            background-color: #2aabd2;
+
+        }
+
+    </style>
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="https://translate.googleapis.com/translate_static/css/translateelement.css"></head>
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{% url 'home' %}">주식예측프로그램</a>
+                   </div>
+                <div id="navbar" class="collapse navbar-collapse pull-right">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="{% url 'home' %}">HOME</a></li>
+                        <li><a href="{% url 'index' %}">주식예측</a></li>
+                        <li><a href="https://www.investing.com/news/">주식정보</a></li>
+                        <li><a href="{% url 'board' %}">게시판</a></li>
+                        <li><a href="{% url 'crawl' %}">팁</a></li>
+                        <li><a href="http://127.0.0.1:8000/">로그아웃</a></li>
+                    </ul>
+                </div><!--/.nav-collapse --></div>
+        </nav>
+
+    <footer id="main_footer">
+        <div class="m_footer1">
+            <h5>효과적으로 근육량 늘리기</h5>
+            <div class="cont1">
+                <div class="video1"></div>
+                <div class="footer_1">
+                    <style>.embed-container { position: relative; padding-bottom: 80%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed//LVYYfZeQMlk' frameborder='0' allowfullscreen></iframe></div>
+                </div>
+                <div class="footer_2">
+                    <style>.embed-container { position: relative; padding-bottom: 80%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed//sMn0kNm20uU' frameborder='0' allowfullscreen></iframe></div>
+                </div>
+                <div class="footer_3">
+                    <style>.embed-container { position: relative; padding-bottom: 80%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed//J4TMWaxPQKk' frameborder='0' allowfullscreen></iframe></div>
+                </div>
+                <div class="footer_4">
+                    <style>.embed-container { position: relative; padding-bottom: 80%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed//ApobDUjr7xc' frameborder='0' allowfullscreen></iframe></div>
+                </div>
+                </li>
+        </div>
+        </div>
+        <div class="m_footer2">
+            <h5>홈 트레이닝</h5>
+            <div class="cont2">
+                <div class="video11"></div>
+                <div class="footer_11">
+                    <style>.embed-container { position: relative; padding-bottom: 80%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed//_buwjp1ogAQ' frameborder='0' allowfullscreen></iframe></div>
+                </div>
+                <div class="footer_21">
+                    <style>.embed-container { position: relative; padding-bottom: 80%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed//voxhcy_oDGA' frameborder='0' allowfullscreen></iframe></div>
+                </div>
+                <div class="footer_31">
+                    <style>.embed-container { position: relative; padding-bottom: 80%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed//4dH528sDhGA' frameborder='0' allowfullscreen></iframe></div>
+                </div>
+                 <div class="footer_41">
+                    <style>.embed-container { position: relative; padding-bottom: 80%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed//A5MzlPgNcJM' frameborder='0' allowfullscreen></iframe></div>
+                 </div>
+        </div>
+        </div>
+        <div class="m_footer3">
+            <h5>단백질 관련</h5>
+            <div class="cont3">
+                <div class="video12"></div>
+                <div class="footer_12">
+                    <style>.embed-container { position: relative; padding-bottom: 80%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed//TDw8xLgpbvg' frameborder='0' allowfullscreen></iframe></div>            </div>
+                <div class="footer_22">
+                    <style>.embed-container { position: relative; padding-bottom: 80%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed//mDXAkP_BJV4' frameborder='0' allowfullscreen></iframe></div>             </div>
+                <div class="footer_32">
+                    <style>.embed-container { position: relative; padding-bottom: 80%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed//k8KUr8LzaaA' frameborder='0' allowfullscreen></iframe></div>             </div>
+                <div class="footer_42">
+                    <style>.embed-container { position: relative; padding-bottom: 80%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed//0e_Ps8UWYo4' frameborder='0' allowfullscreen></iframe></div>             </div>
+        </div>
+        </div>
+    </footer>
+    <div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20" alt="Google 번역"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">원본 텍스트</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">번역 제안하기</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
+
+<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>

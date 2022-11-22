@@ -1,0 +1,130 @@
+
+/* Global */
+:root {
+  /* Color */
+  --color-white: #ffffff;
+  --color-light-white: #eeeeee;
+  --color-dark-white: #bdbdbd;
+  --color-pink: #fe918d;
+  --color-dark-pink: #ff6863;
+  --color-grey: #616161;
+  --color-light-grey: #7c7979;
+  --color-dark-grey: #4d4d4d;
+  --color-blue: #73aace;
+  --color-yellow: #fff7d1;
+  --color-orange: #feb546;
+  --color-black: #000000;
+
+  /* Font size */
+  --font-large: 48px;
+  --font-medium: 28px;
+  --font-regular: 18px;
+  --font-small: 16px;
+  --font-micro: 14px;
+
+  /* Font weight */
+  --weight-bold: 700;
+  --weight-semi-bold: 600;
+  --weight-regular: 400;
+
+  /* Size */
+  --size-border-radius: 4px;
+
+  /* Animation */
+  --animation-duration: 300ms; /* 애니메이션 효과를 줄때 1s는 너무 길기 때문에 보통 300ms 준다. 이 속도가 제일 예쁘게 변화하기 때문! */
+}
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.section {
+  padding: 50px;
+  text-align: center;
+  margin: auto; /* margin이 한쪽에만 몰려있을 때 auto를 쓰면 자동으로 양옆으로 정렬된다. */
+}
+
+.section__container {
+  max-width: 1200px; /* 이거 설정 안하면 늘어나면서 배열되는 아이콘 사이 간격이 너무 멀어짐 웹사이트 예쁘게 보이려면 필수 */
+  margin: auto;
+}
+
+.navbar-brand{
+  font-size: var(--font-regular);
+  font-weight: bold;
+  margin-right: 40px;
+}
+
+.bg-main .stock_title{
+  font-size: var(--font-large);
+  font-weight: bold;
+}
+
+.bg-main .stock_description{
+  font-size: var(--font-large);
+  font-weight: 200;
+}
+
+.bg-main .community_button{
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  color: #000d80;
+  font-size: var(--font-micro);
+  margin: 10px;
+  padding: 8px 12px;
+  border: 2px solid #000d80;
+  border-radius: var(--size-border-radius);
+}
+
+.about__majors {
+  display: flex;
+  justify-content: space-between;
+  margin: 80px 0;
+}
+
+.major__icon {
+  width: 170px;
+  height: 170px;
+  line-height: 170px;
+  font-size: 70px;
+  margin: auto;
+  border: 1px solid;
+  border-radius: 50%;
+  margin-bottom: 16px;
+}
+
+.icon__html {
+  border: 1px solid #FF6900;
+}
+
+.major__icon .html_5{
+  width: 43%;
+  height: 43%;
+  transition: all var(--animation-duration) ease;
+}
+
+.icon__python {
+  border: 1px solid #3B4BC9;
+}
+
+.major__icon .python{
+  width: 45%;
+  height: 45%;
+  transition: all var(--animation-duration) ease;
+}
+
+.icon__gears {
+  border: 1px solid #7387DE;
+}
+
+.major__icon .gears{
+  width: 50%;
+  height: 40%;
+  transition: all var(--animation-duration) ease;
+}
+
+.major__icon .icon__image:hover{
+  transform: rotate(-30deg) scale(1.1);
+}

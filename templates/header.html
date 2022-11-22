@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<div>
+    <ul>
+        {% if user.is_authenticated %}
+            <div class="logout_div">
+                <ul class="underline-hover">
+                    <li class="logout_text"><a href="{% url 'board' %}"><span>홈</span></a></li>
+                    <li class="logout_text"><a href="{% url 'board' %}"><span>게시판</span></a></li>
+                    <li class="logout_text"><a href="{% url 'logout' %}"><span>로그아웃</span></a></li>
+                </ul>
+            </div>
+        {% else %}
+            <div class="login_div">
+                <ul class="underline-hover">
+                    <li class="logout_text"><a href="{% url 'board' %}"><span>홈</span></a></li>
+                    <li class="login_text"><a href="{% url 'login' %}"><span>로그인</span></a></li>
+                    <li class="login_text"><a href="{% url 'signup' %}"><span>회원가입</span></a></li>
+                </ul>
+            </div>
+        {% endif %}
+    </ul>
+</div>

@@ -1,0 +1,76 @@
+
+<center>개인 건강 정보 입력</center>
+<br>
+<br>
+
+<center>
+<form action=/APP/predict>
+몸무게(weight): <input type=text name='x1' value><br>
+키(height)   : <input type=text name='x2'><br>
+나이(age)     : <input type=text name='x3'><br>
+성별(gender)  : <input type=text name='x4'><br>
+<input type='submit' value='정보 확인하기'>
+</form>
+</center>
+
+<table width=80% align=center border=1>
+  <tr>
+  <td height=100 width=30% align=center>주식이름1</td>
+    <td>여기에 차트를 집어넣으려면 어떻게 해야할까</td>
+  </tr>
+  <tr>
+  <td height=100 width=30% align=center>주식이름2</td>
+    <td>차트2</td>
+  </tr>
+  <tr>
+  <td height=100 width=30% align=center>주식이름3</td>
+    <td>차트3</td>
+  </tr>
+  <tr>
+  <td height=100 width=30% align=center>주식이름4</td>
+    <td>차트4</td>
+  </tr>
+  <tr>
+  <td height=100 width=30% align=center>주식이름5</td>
+    <td>차트5</td>
+  </tr>
+</table>
+
+<!-- django의 HTML 코드 -->
+	<ul>
+        <!-- edit. 리스트 두개를 한번에 받아서 출력 -->
+        {%for home in data %}
+        <tr>
+          <td>
+            <div class="row">
+              <div class="col-3 p-3"><a href="{{home.link}}"><img src="{{home.image_s}}"></img></a></div>
+              <div class="col-9 p-3" style="font-size:14px;">
+                <div class="text-secondary" style="font-size:12px;">{{home.writing}} · 경제 메인</div>
+                <a href="{{ home.link }}"><b>{{home.title}}</b></a><br>
+                <div class="mt-2" style="font-size: 12px">{{home.content}}</div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        {%endfor%}
+        <!-- -->
+    </ul>
+
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--{% for data in prediction %}-->
+<!--{{ data }}-->
+<!--{% endfor %}-->
+
+<!--</body>-->
+<!--</html>-->
+

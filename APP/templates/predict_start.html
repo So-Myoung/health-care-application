@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+<html>
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+</head>
+<body>
+    <!-- template 상단에 static 폴더를 접근할 수 있도록 코드 추가 -->
+    <h1>chart test</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>year</th>
+                <th>salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in rows %}
+                <tr>
+                    {% for col in row %}
+                        <td>{{ col }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--    {% for data in prediction %}-->
+<!--    {{ data }}-->
+<!--    {% endfor %}-->
+<!--</body>-->
+<!--</html>-->
+

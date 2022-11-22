@@ -1,0 +1,105 @@
+.wrapper {
+    border: 1px solid black;
+    width: 400px;
+    padding: 30px;
+    box-sizing: border-box;
+    margin: auto;
+    weight: bold;
+}
+input[type=text] {
+    width: 100%;
+    padding: 8px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    box-sizing: border-box;
+}
+input[type=email] {
+    width: 100%;
+    padding: 8px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    box-sizing: border-box;
+}
+input[type=password] {
+    width: 100%;
+    padding: 8px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    box-sizing: border-box;
+}
+input[type=submit] {
+    width: 100%;
+    background-color: dodgerblue;
+    color: #fff;
+    padding: 7px;
+    margin-top: 15px;
+    border-radius: 5px;
+    border: none;
+}
+.login_div,
+.logout_div {
+    display: flex;
+    padding: 10px 10px;;
+    float: right;
+    margin-top: -10px;
+}
+
+.underline-hover {
+    background-color: #fff;
+    margin: 0;
+}
+.underline-hover li{
+    list-style: none;
+    display: inline-block;
+    margin: 0 30px;
+}
+.underline-hover li a {
+    color: black;
+    text-decoration: none;
+    position: relative;
+}
+.underline-hover li a:before {
+    content: '';
+    background-color: dodgerblue;
+    width: 0;
+    height: 2px;
+    position: absolute;
+    left: 50%; /*right로 바꾸면 오른쪽에서*/
+    transform: translateX(-50%);
+    bottom: -10px;
+    transition: 0.3s;
+}
+.underline-hover li a:hover:before {
+    width: 100%;
+}
+.table {
+  border-collapse: collapse;
+  border-top: 3px solid #168;
+}
+.table th {
+  color: #168;
+  background: #f0f6f9;
+  text-align: center;
+}
+.table th, .table td {
+  border: 1px solid #ddd;
+}
+.table th:first-child, .table td:first-child {
+  border-left: 0;
+}
+.table th:last-child, .table td:last-child {
+  border-right: 0;
+}
+.table tr td:first-child{
+  text-align: center;
+}
+.table caption{caption-side: bottom; display: none;}
+.table th:nth-child(3) {
+    width:700px;
+}
+.table .td_color td {
+    vertical-align:middle;
+}

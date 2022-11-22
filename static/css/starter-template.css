@@ -1,0 +1,13 @@
+
+* {
+  box-sizing: border-box;
+  /* Parent container에 Child container가 딱 맞게 들어감 */
+}
+
+body {
+  padding-top: 50px;
+}
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}

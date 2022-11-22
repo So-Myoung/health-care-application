@@ -1,0 +1,13 @@
+.board_button{
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  color: var(--color-dark-grey);
+  font-size: var(--font-micro);
+  font-weight: bolder;
+  margin-top: 10px;
+  padding: 8px 18px;
+  border: 2px solid var(--color-dark-grey);
+  border-radius: var(--size-border-radius);
+}
