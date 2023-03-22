@@ -1,0 +1,107 @@
+<!DOCTYPE html><!-- saved from url=(0049)http://bootstrapk.com/examples/starter-template/# -->
+<html lang="en">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/static/css/favicon.png">
+    <title>주식 예측 프로그램</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/static/css/starter-template.css" rel="stylesheet">
+    <link href="/static/css/style1.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&family=Jua&family=Nanum+Gothic&family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <style>
+    .bg-main{
+        background-image: url( "static/css/stock.jpg" );
+        background-size: cover;
+        color:#fff;
+        text-align: center;
+        padding-top: 150px;
+        padding-bottom: 150px;
+    }
+    </style>
+</head>
+    <body>
+
+        <!-- bootstrap을 이용한 Navbar -->
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <!-- <img class="logo__image" src="/static/favicon.png" alt="로고"> -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="http://127.0.0.1:8000/">주식예측프로그램</a>
+                </div>
+                <div id="navbar" class="collapse navbar-collapse navbarmenu">
+                    <ul class="nav navbar-nav navbar1">
+                        <li class="navbar1_menu active"><a href="http://127.0.0.1:8000/">HOME</a></li>
+                        <li class="navbar1_menu"><a href="APP/index">주식예측</a></li>
+                        <li class="navbar1_menu"><a href="#">주식정보</a></li>
+                        <li class="navbar1_menu"><a href="#">커뮤니티</a></li>
+                        <li class="navbar1_menu"><a href="APP/maker">제작자</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav pull-right navbar2">
+                        <li class="navbar2_menu"><a href="accounts/login">로그인</a></li>
+                    </ul>
+                </div><!--/.nav-collapse --></div>
+        </nav>
+
+        <!-- Home -->
+        <div class="container-fluid text-right bg-main">
+                <p class="stock_title">주식 예측 프로그램</p>
+                <p class="stock_description">RNN의 종류인 LSTM 알고리즘을 이용하여 설계한 딥러닝 프로그램으로 <br/>
+                    주식 시장 예측 서비스와 주식 정보, 커뮤니티 게시판을 제공합니다.</p>
+                <form action="https://google.com">
+                    <button type="submit" class="community_button" >커뮤니티 바로가기</button>
+                </form>
+        </div>
+
+        <section id="about" class="section section__container">
+            <div class="about__majors">
+                <div class="major">
+                    <div class="major__icon icon__html">
+                        <img src="static/css/html5.png" class="icon__image html_5">
+                    </div>
+                    <h2 class="major__title">Front-end</h2>
+                    <div class="major__description">
+                        HTML, CSS, Bootstrap
+                        <br />Django, Python
+                    </div>
+                </div>
+                <div class="major">
+                    <div class="major__icon icon__python">
+                        <img src="static/css/python.png" class="icon__image python">
+                    </div>
+                    <h2 class="major__title">Back-end</h2>
+                    <p class="major__description">
+                        Django, Python
+                        <br />Bootstrap, SQL
+                    </p>
+                </div>
+                <div class="major">
+                    <div class="major__icon icon__gears" >
+                        <img src="static/css/gears-solid.png" class="icon__image gears">
+                    </div>
+                    <h2 class="major__title">Deep Learning</h2>
+                    <p class="major__description">
+                        Django, Python
+                        <br/>RNN, LSTM
+                    </p>
+                </div>
+            </div>
+        </section>
+
+      <!-- Placed at the end of the document so the pages load faster -->
+        <script src="/static/js/jquery.min.js">
+        </script>
+        <script src="/static/js/bootstrap.min.js">
+        </script>
+    </body></html>

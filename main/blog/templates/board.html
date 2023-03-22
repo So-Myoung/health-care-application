@@ -1,0 +1,82 @@
+{% load bootstrap4 %}
+{% block content %}<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/static/css/heart.png">
+    <title>커뮤니티</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/static/css/starter-template.css" rel="stylesheet">
+    <link href="/static/css/style1.css" rel="stylesheet">
+    <link href="/static/css/style3.css" rel="stylesheet">
+    <link href="/static/css/board.css" rel="stylesheet">
+    <link href="/static/css/nav.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&family=Jua&family=Nanum+Gothic&family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR&display=swap" rel="stylesheet">
+</head>
+    <body>
+
+    <!-- Navbar -->
+    <nav id="navbar">
+      <div class="navbar__logo">
+        <a href="http://127.0.0.1:8000/">건강관리서비스</a>
+      </div>
+      <ul class="navbar__menu">
+        <li class="navbar__menu__item"><a href="http://127.0.0.1:8000/">Home</a></li>
+        <li class="navbar__menu__item"><a href="{% url 'bmi' %}">비만도(BMI)</a></li>
+        <li class="navbar__menu__item"><a href="/myapp">칼로리</a></li>
+        <li class="navbar__menu__item active"><a href="{% url 'board' %}">커뮤니티</a></li>
+        <li class="navbar__menu__item"><a href="{% url 'crawl' %}">운동정보</a></li>
+        <li class="navbar__menu__item"><a href="{% url 'maker' %}">제작자</a></li>
+        <li class="navbar__menu__item"><a href="{% url 'tab' %}">영양제</a></li>
+        <li class="navbar__menu__item"><a href="{% url 'logout' %}">로그아웃</a></li>
+      </ul>
+      <!-- Toggle button -->
+    </nav>
+
+<div style="width:1200px; margin:0px auto;">
+    <h1 style="text-align:center;">커뮤니티</h1>
+    <hr style="border: 0.5px solid #7c7979" class="hrsolid">
+    {% if board %}
+    <h2 style="text-align:center; padding-bottom: 40px">목록</h2>
+    <table style="text-align:center; width:1200px; border:1px solid black;" class="table">
+        <thead>
+            <tr class="th_color">
+                <th></th>
+                <th>제목</th>
+                <th>내용</th>
+                <th>작성자</th>
+                <th>수정</th>
+                <th>삭제</th>
+            </tr>
+        </thead>
+            {% for board_list in board %}
+            <tbody>
+                <tr class="td_color" >
+                    <td></td>
+                    <td>{{ board_list.title }}</td>
+                    <td>{{ board_list.content }}</td>
+                    <td>{{ board_list.user }}</td>
+                    <td><button class="board_button btn btn-secondary btn-sm rounded-pill" onclick="location.href='/edit/{{board_list.pk}}'">수정</button></td>
+                    <td><button class="board_button btn btn-danger btn-sm rounded-pill" onclick="location.href='/delete/{{board_list.pk}}'">삭제</button></td>
+                </tr>
+            </tbody>
+            {% endfor %}
+    </table>
+    {% endif %}
+
+    <div style="width:500px; margin:0px auto;">
+    <h2 style="text-align:center; padding: 60px 0px">글쓰기</h2>
+        <form action="" method="POST" style="max-width:500px;">
+            {% csrf_token %}
+            {% bootstrap_form boardForm %}
+            <div style=" text-align: center;">
+            <button type="submit" class="btn btn-primary rounded-pill col-12 board_button" style="display: inline-block">작성</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

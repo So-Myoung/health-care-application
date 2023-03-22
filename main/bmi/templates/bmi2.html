@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/static/css/heart.png">
+    <title>BMI 계산기</title>
+    <!--bokeh-->
+    <link rel="stylesheet" type="text/css" href="http://cdn.pydata.org/bokeh/release/bokeh-2.1.1.min.css"/>
+    <link rel="stylesheet" type="text/css" href="http://cdn.pydata.org/bokeh/release/bokeh-widgets-2.1.1.min.css"/>
+    <link rel="stylesheet" type="text/css" href="http://cdn.pydata.org/bokeh/release/bokeh-tables-2.1.1.min.css"/>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!--bmi style-->
+    <link href="/static/css/style1.css" rel="stylesheet">
+    <link href="/static/css/nav.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&family=Jua&family=Nanum+Gothic&family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <link href="/static/bmi/style.css" rel="stylesheet">
+</head>
+<body>
+        <header id = "main_header">
+            <div id="title">
+            </div>
+        </header>
+    
+    <!-- Navbar -->
+    <nav id="navbar">
+      <div class="navbar__logo">
+        <a href="{% url 'home' %}">건강 관리 서비스</a>
+      </div>
+      <ul class="navbar__menu">
+        <li class="navbar__menu__item"><a href="http://127.0.0.1:8000/">Home</a></li>
+        <li class="navbar__menu__item active"><a href="{% url 'bmi' %}">비만도(BMI)</a></li>
+        <li class="navbar__menu__item"><a href="/myapp">칼로리</a></li>
+        <li class="navbar__menu__item"><a href="{% url 'board' %}">커뮤니티</a></li>
+        <li class="navbar__menu__item"><a href="{% url 'crawl' %}">운동정보</a></li>
+        <li class="navbar__menu__item"><a href="{% url 'maker' %}">제작자</a></li>
+        <li class="navbar__menu__item"><a href="{% url 'tab' %}">영양제</a></li>
+        <li class="navbar__menu__item"><a href="{% url 'logout' %}">로그아웃</a></li>
+      </ul>
+      <!-- Toggle button -->
+    </nav>
+
+            {% block content %}
+            {% endblock content %}
+        <!--Bokeh-->
+        <script type="text/javascript" src="http://cdn.pydata.org/bokeh/release/bokeh-2.1.1.min.js"></script>
+        <script type="text/javascript" src="http://cdn.pydata.org/bokeh/release/bokeh-widgets-2.1.1.min.js"></script>
+        <script type="text/javascript" src="http://cdn.pydata.org/bokeh/release/bokeh-tables-2.1.1.min.js"></script>
+        <script type="text/javascript" src="http://cdn.pydata.org/bokeh/release/bokeh-api-2.1.1.min.js"></script>
+        {{script|safe}}
+        <!--custom scripts-->
+        <script type="text/javascript" src="{% static 'bmi/custom.js' %}">
+        </script>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+        $(document).ready(function(){
+        $('[data-toggle="popover"]').popover();});
+        </script>
+    
+        <div class="container">
+        <div class="form-row">
+        <!-#########################Col1###############-->
+        <div class="col-md-6 col-sm-12 col-xs-12">
+        <div class="tab-bmi">
+        <h2>BMI 계산기</h2>
+        <div class="tab">
+            <button  class="tablinks" onclick="openUnit(event, 'metric')">미터</button>
+        </div>
+    
+        <div class="tabcontent" id="metric">
+        <form method="post">
+        {% csrf_token %}
+        <div class="col-12">
+            <label>몸무게(kg): </label>
+            <input type="text" name="weight-metric" class="form-control" required placeholder="kg">
+        </div>
+
+        <div class="col-12">
+        <label>키(m): </label>
+        <input type="text" name="height-metric" class="form-control" required placeholder="m">
+        </div>
+        {% if request.user.is_authenticated %}
+        <div class="form-check my-5">
+        <input class="form-check-input" checked="checked" name="save" value="on" type="checkbox">
+        <label class="form-check-label">저장하시겠습니까
+        <a href="#" title="저장하시겠습니까?" data-toggle="popover" data-trigger="focus" data-content="체중을 관리하기를 원한다면 로그인이 필요합니다.">?</a>
+        </label>
+        </div>
+        {% else %}
+        <div class="form-check my-5">
+        <input disabled class="form-check-input" checked="checked" name="save" value="on" type="checkbox">
+        <label class="form-check-label">저장하시겠습니까
+        <a href="#" title="Why to save it?" data-toggle="popover" data-trigger="focus"
+        data-content="체중을 관리하기를 원한다면 로그인이 필요합니다.">?</a>
+        </label>
+        </div>
+        {% endif %}
+        <button type="submit" class="btn btn-primary" action="{% url 'home' %}">계산하기</button>
+        </form>
+        </div>
+
+        <div class="tabcontent" id="imperial">
+        <form method="post">
+        {% csrf_token %}
+        {% if request.user.is_authenticated %}
+        <div class="form-check my-5">
+
+
+
+
+        </label>
+        </div>
+
+        {% else %}
+        <div class="form-check my-5">
+        <input disabled class="form-check-input" checked="checked" name="save" value="on" type="checkbox">
+        <label class="form-check-label">Save It.
+        <a href="#" title="Why to save it?" data-toggle="popover" data-trigger="focus"
+        data-content="In case you want to track your weight, you can save it.(login required)">?</a>
+        </label>
+        </div>
+
+        {% endif %}
+
+        </form>
+        </div>
+        </div>
+            <!-#########################Col2###############-->
+        </div>
+
+        {% if bmi %}
+        <div class="col-md-6 col-sm-12 col-xs-12">
+        <h2>결과</h2>
+        <p>BMI 지수 = {{bmi}} kg/m² | {{state}}</p>
+        <div class="progress">
+        <div class="progress-bar bg-primary" style="width:25%">
+        저체중
+        </div>
+        <div class="progress-bar bg-success" style="width:25%">
+        정상
+        </div>
+        <div class="progress-bar bg-warning" style="width:25%">
+        과체중
+        </div>
+        <div class="progress-bar bg-danger" style="width:25%">
+        비만
+        </div>
+        </div>
+        </div>
+
+        {% endif %}
+        </div>
+
+        {{div|safe}}
+        </div>
+</body>
+</html>

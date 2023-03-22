@@ -1,0 +1,128 @@
+<!DOCTYPE html><!-- saved from url=(0049)http://bootstrapk.com/examples/starter-template/# -->
+<html lang="en">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/static/css/heart.png">
+    <title>건강 관리 서비스</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/static/css/starter-template.css" rel="stylesheet">
+    <link href="/static/css/style1.css" rel="stylesheet">
+    <link href="/static/css/style3.css" rel="stylesheet">
+    <link href="/static/css/board.css" rel="stylesheet">
+    <link href="/static/css/nav.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&family=Jua&family=Nanum+Gothic&family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR&display=swap" rel="stylesheet">
+</head>
+    <body>
+
+    <!-- Navbar -->
+    <nav id="navbar">
+      <div class="navbar__logo">
+        <a href="http://127.0.0.1:8000/">건강관리서비스</a>
+      </div>
+      <ul class="navbar__menu">
+        <li class="navbar__menu__item"><a href="http://127.0.0.1:8000/">Home</a></li>
+        <li class="navbar__menu__item"><a href="{% url 'bmi' %}">비만도(BMI)</a></li>
+        <li class="navbar__menu__item"><a href="/myapp">칼로리</a></li>
+        <li class="navbar__menu__item"><a href="{% url 'board' %}">커뮤니티</a></li>
+        <li class="navbar__menu__item"><a href="{% url 'crawl' %}">운동정보</a></li>
+        <li class="navbar__menu__item active"><a href="{% url 'maker' %}">제작자</a></li>
+        <li class="navbar__menu__item"><a href="{% url 'tab' %}">영양제</a></li>
+        <li class="navbar__menu__item"><a href="{% url 'logout' %}">로그아웃</a></li>
+      </ul>
+      <!-- Toggle button -->
+    </nav>
+
+        <section id="testimonials" class="section">
+            <div class="section__container">
+            <h1>제작자 소개</h1>
+            <hr style="border: 0.5px solid #7c7979" class="hrsolid">
+            <div class="testimonials">
+                <div class="testimonial">
+                        <img
+                        src="/static/css/people1.jpg"
+                        alt="People"
+                        class="testimonial__avatar"
+                        >
+                    <div class="testimonial__speech-bubble">
+                        <p class="name"><a href="https://github.com/So-Myoung">김소명</a> / 1997.12.28 / 여</p>
+                        <div class="maker_description">
+                        <p>학교: 명지대학교</p>
+                        <p>학과: 정보통신공학과</p>
+                        <p>e-mail: thaud9696@naver.com</p>
+                        <p>GitHub: https://github.com/So-Myoung</p>
+                        <p><a href="https://github.com/So-Myoung"> So-Myoung의 GitHub 바로가기</a></p>
+                        <p class="career_description">Front-end 언어인 html, css, javascript 위주로 공부 중이며, Project를 제작하며 연습하고 있습니다.
+                            학교 수업을 통해 Python, SQL, DB를 배우고 있으며 Back-end와 Front-end를 다루는 풀스택 개발자(full-stack-developer)를 목표로 하고 있습니다.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial__speech-bubble">
+                        <p class="name"><a href="https://github.com/ohwoojune">오우준</a> / 1998.06.26 / 남</p>
+                        <div class="maker_description">
+                        <p>학교: 명지대학교</p>
+                        <p>학과: 정보통신공학과</p>
+                        <p>e-mail: dhdnwns0626@naver.com</p>
+                        <p>GitHub: https://github.com/ohwoojune</p>
+                        <p><a href="https://github.com/ohwoojune"> ohwoojune의 GitHub 바로가기</a></p>
+                        <p class="career_description">응용 SW 엔지니어 분야에서 Python 언어를 사용하는  BackEnd 웹 개발자를 꿈꾸며 준비하는 학생입니다.<br>
+                            Python언어에 대한 확실한 기초와 다양한 개발환경 경험을 통해 개발자에게 필요한 능력을 함양 하고자 공부하고 있습니다 .</p>
+                        </div>
+                    </div>
+                    <img
+                        src="/static/css/people2.jpg"
+                        alt="People"
+                        class="testimonial__avatar"
+                    >
+                    </div>
+                <div class="testimonial">
+                    <img
+                    src="/static/css/people3.jpg"
+                    alt="People"
+                    class="testimonial__avatar"
+                    >
+                    <div class="testimonial__speech-bubble">
+                        <p class="name"><a href="https://github.com/alsyi9927">이민석</a>/ 1999.12.09 / 남</p>
+                        <div class="maker_description">
+                        <p>학교: 명지대학교</p>
+                        <p>학과: 정보통신공학과</p>
+                        <p>e-mail: yiminseok@naver.com</p>
+                        <p>GitHub: https://github.com/alsyi9927</p>
+                        <p><a href="https://github.com/alsyi9927"> alsyi9927의 GitHub 바로가기</a></p>
+                        <p class="career_description">백엔드 언어인 Java, Python을 위주로 공부 중이며, Django 및 spring을 다루어 보았습니다.
+                            또한 학교 수업을 통해 파이썬을 이용한 데이터 분석과 딥러닝을 공부중이며 파이썬을 이용하여 게임 개발을 하는 프로젝트에 참여 경험이 있습니다.
+                            <br>앞으로는 게임 개발, 백엔드, 프론트 엔드, 데이터 분석 등 분야를 가리지 않고 다양한 분야를 공부해볼 예정입니다.
+                            현재 Deep Learning과 Data Mining and Visualization 수강하고 있으며 추후에 인공지능 개발자를 목표로 하며 학업에 집중하고 있습니다.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial__speech-bubble">
+                        <p class="name"><a href="https://github.com/vkvkdl23">최규성</a> / 1999.12.17 / 남</p>
+                        <div class="maker_description">
+                        <p>학교: 명지대학교</p>
+                        <p>학과: 정보통신공학과</p>
+                        <p>e-mail: vkvkdl23@naver.com</p>
+                        <p>GitHub: https://github.com/vkvkdl23</p>
+                        <p><a href="https://github.com/vkvkdl23"> vkvkdl23의 GitHub 바로가기</a></p>
+                        <p class="career_description">JAVA와 파이썬을 이용하여  풀스택 웹 개발자를 꿈꾸는 학생입니다.
+                            현재 Python의 장고를 이용하여 웹 개발을 하고있으며 또한 회사 인턴을 통해 배운 딥러닝과 머신러닝알고리즘을 이용한 프로그램을 제작했으며 꿈인 풀스택 개발자를 목표로 하고 있습니다.</p>
+                        </div>
+                    </div>
+                     <img
+                        src="/static/css/people4.jpg"
+                        alt="People"
+                        class="testimonial__avatar"
+                     >
+                </div>
+                </div>
+            </div>
+        </section>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html><!-- saved from url=(0049)http://bootstrapk.com/examples/starter-template/# -->
+<html lang="en">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/static/css/heart.png">
+    <title>건강 관리 서비스</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/static/css/starter-template.css" rel="stylesheet">
+    <link href="/static/css/style1.css" rel="stylesheet">
+    <link href="/static/css/nav.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&family=Jua&family=Nanum+Gothic&family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <style>
+    .bg-main{
+        background-image: url( "/static/css/workout2.png" );
+        background-size: cover;
+        background-repeat: no-repeat;
+        color:#ffffff;
+        text-align: 700;
+        padding-top: 250px;
+        padding-bottom: 300px;
+    }
+    </style>
+    <style type="text/css">
+        .navbar{
+            background-color:#2958a3 !important;
+            border-color: #2958a3;
+        }
+    </style>
+
+</head>
+    <body>
+
+    <!-- Navbar -->
+    <nav id="navbar">
+      <div class="navbar__logo">
+        <a href="http://127.0.0.1:8000/">건강관리서비스</a>
+      </div>
+      <ul class="navbar__menu">
+        <li class="navbar__menu__item"><a href="{% url 'login' %}">로그인</a></li>
+      </ul>
+      <!-- Toggle button -->
+    </nav>
+
+ <!-- Home -->
+        <div class="container-fluid text-right bg-main">
+                <p class="stock_title" style="font-size:55px; font-weight: 900px; color:black; margin-right: 90px;">건강 관리 서비스</p>
+                <p class="stock_description" style="font-size:40px; font-weight: 200px; color:black; margin-right: 90px;">Health Care Service</p>
+                <form action="{% url 'login' %}">
+                    <button type="submit" class="community_button" style="margin-top: 25px; color: #000d80; border: 2px solid #000d80; margin-right: 90px; font-weight: bold;">커뮤니티 바로가기</button>
+                </form>
+        </div>
+
+        <section id="about" class="section section__container">
+            <div class="about__majors">
+                <div class="major">
+                    <div class="major__icon icon__html">
+                        <img src="/static/css/html5.png" class="icon__image html_5">
+                    </div>
+                    <h2 class="major__title">Front-end</h2>
+                    <div class="major__description">
+                        HTML, CSS, Bootstrap
+                        <br />Django, Python
+                    </div>
+                </div>
+                <div class="major">
+                    <div class="major__icon icon__python">
+                        <img src="/static/css/python.png" class="icon__image python">
+                    </div>
+                    <h2 class="major__title">Back-end</h2>
+                    <p class="major__description">
+                        Django, Python
+                        <br />Bootstrap, SQL
+                    </p>
+                </div>
+                <div class="major">
+                    <div class="major__icon icon__gears" >
+                        <img src="/static/css/gears-solid.png" class="icon__image gears">
+                    </div>
+                    <h2 class="major__title">Deep Learning</h2>
+                    <p class="major__description">
+                        Django, Python
+                        <br/>RNN, LSTM
+                    </p>
+                </div>
+            </div>
+        </section>
+
+      <!-- Placed at the end of the document so the pages load faster -->
+        <script src="/static/js/jquery.min.js">
+        </script>
+        <script src="/static/js/bootstrap.min.js">
+        </script>
+    </body></html>
