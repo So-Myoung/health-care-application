@@ -3,6 +3,7 @@
 
 ### Info
 팀원: 총 4명
+직책: 팀장
 
 ### 기술 스택
 1. 프론트: HTML, CSS, JS, BootStrap
